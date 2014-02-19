@@ -11,3 +11,6 @@ smartphones. By nature this work is incomplete and expected to
 continuously update as specifications, device capabilities, and use
 cases evolve over time.
 
+The documentation is written in reStructuredText and can be build
+using Sphinx. A usually up-to-date HTML version is available at
+`Read the Docs <http://nfciop.readthedocs.org/en/latest/`_.
