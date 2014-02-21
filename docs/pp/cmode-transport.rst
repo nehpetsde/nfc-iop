@@ -3,6 +3,12 @@
 Connection-mode Transport
 =========================
 
+.. note::
+
+   The scenarios in this section require that the |DUT| has the
+   :ref:`cmode_echo_test_application` installed and accessible under
+   the service name ``urn:nfc:sn:dta-co-echo-in``.
+
 Connection-mode transport provides sequenced and guaranteed delivery
 of service data units between a local and a remote service access
 point in either direction. An established connection-mode transport
@@ -14,9 +20,64 @@ Disconnected Mode (DM) PDU. Once established, service data units can
 be moved over a *data link connection* using sequentially numbered
 Information (I) PDUs.
 
-The scenarios in this section require that the |DUT| has the |ETA|
-installed and accessible under the service name
-``urn:nfc:sn:dta-co-echo-in``.
+The flow of I PDUs from sender to receiver is regulated by a sliding
+window control scheme. A receive window (RW) that is announced during
+connection setup informs the sender of the number of I PDUs it may
+send before there comes acknowledgement. Conceptually this is best
+imagined as a receive buffer to hold up to RW number of I PDUs that
+fills when I PDUs are received from the remote endpoint and empties
+when they get dispatched to the upper layer service user. The sender
+incrementall count of outbound I PDUs is transmitted in the *send
+sequence number* N(S) field of the I PDU. The receiver populates the
+*receive sequence number* N(R) field of outbound Information (I) or
+Receive Ready (RR) or Receive Not Ready (RNR) PDUs with the N(S) of
+the last I PDU successfully dispatched to the service user, thereby
+providing acknowledgement and an update of the receive buffer fill
+status.
+
+To fit into transmissions, the send and receive sequence numbers must
+be limited using modular arithmetic. LLCP has choosen the modulus 16
+so that the send and receive sequence number can be transmitted in a
+single octet, each consuming 4 bits. Consequently the largest possible
+receive window size is 15. With the sequence number of the next
+in-sequence I PDU to be sent denoted by the *send state variable* V(S)
+and the most recently received N(R) value kept in the *send
+acknowledgement state variable* V(SA), both initialized with 0 after
+connection setup, then **V(S) - V(SA) ≡ RW (mod 16)** means that the
+remote endpoint's receive window is exhausted and an I PDU can not be
+send. If an I PDU can be send then the *send state variable* V(S)
+becomes **V(S) + 1 (mod 16)** after transmission.
+
+As *data link connections* are bi-directional acknowledgement, by
+means of the *receive sequence number*, is ideally transmitted with
+the I PDUs flowing back and forth. However, if there's no information
+to send but acknowledgement due, Receive Ready (RR) or Receive Not
+Ready (RNR) PDUs must be used to convey a new N(R) value to the remote
+endpoint. For the purpose of sending acknowledgement and flow control
+there is no difference between sending RR versus RNR. The difference
+is that sending RNR indicates that the local service user is
+temporarily unable to consume further data and it's advisable that the
+remote service user stops generating (or whatever is appropriate). For
+example, the :ref:`cmode_echo_test_application` operates a buffer for
+data units that regulates how many I PDUs can be dispatched from the
+receive window. If the receive window would be 3 and the buffer
+capacity 2 then in total 5 I PDUs may be send by the remote endpoint
+before all gets stuck. By transmitting the busy signal when the echo
+buffer becomes full, the remote party can adjust and stop generating.
+
+LLCP requires that the MAC layer is reliable, i.e. data send by a
+local LLC is guaranteed to arrive at the remote LLC. For *data link
+connections* this means that a sender does not need to memorize
+outbound I PDUs for potential retransmission and no mechanism exists
+that would allow a receiver to request retransmission of an I
+PDU. What though may happen is that *send sequence numbers* received
+from the remote endpoint are not monotonically increasing (modulo 16)
+due to implementation errors in the remote send or the local receive
+unit. If that happens, the receiver will send a Frame Reject (FRMR)
+PDU to notify the sender and immediately regard the *data link
+connection* as terminated.
+
+
 
 .. _cmode_eta_connect:
 
