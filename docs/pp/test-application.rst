@@ -8,6 +8,8 @@ Echo Test Application
 The |ETA| is an application running on the |DUT| that uses
 functionalities of the local LLCP implementation and API.
 
+.. _cless_echo_test_application:
+
 Connection-less Echo Test Application
 -------------------------------------
 
@@ -29,6 +31,7 @@ behavior is defined by the following two procedures run concurrently.
   the buffer and send them, in the order retrieved, to the remote
   service access point ``urn:nfc:sn:dta-cl-echo-out``.
 
+.. _cmode_echo_test_application:
 
 Connection-mode Echo Test Application
 -------------------------------------
