@@ -3,6 +3,12 @@
 Connection-less Transport
 =========================
 
+.. note::
+
+   The scenarios in this section require that the |DUT| has the
+   :ref:`cmode_echo_test_application` installed and accessible under
+   the service name ``urn:nfc:sn:dta-cl-echo-in``.
+
 Connection-less transport provides best effort delivery of service
 data units between a local and a remote service access point in either
 direction. An connection-less transport channel is termed a *logical
@@ -14,10 +20,6 @@ Due to the Medium Access (MAC) layer guarantees any outbound LLCP PDU,
 includinga UI PDU, will arrive at the remote LLC layer. However, a
 local LLC or remote LLC may drop a UI PDU at any point in time without
 notification.
-
-The scenarios in this section require that the |DUT| has the |ETA|
-installed and accessible under the service name
-``urn:nfc:sn:dta-cl-echo-in``.
 
 .. _p2p_cless_eta_sot:
 
