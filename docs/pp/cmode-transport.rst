@@ -43,7 +43,7 @@ receive window size is 15. With the sequence number of the next
 in-sequence I PDU to be sent denoted by the *send state variable* V(S)
 and the most recently received N(R) value kept in the *send
 acknowledgement state variable* V(SA), both initialized with 0 after
-connection setup, then **V(S) - V(SA) ≡ RW (mod 16)** means that the
+connection setup, then **V(S) - V(SA) = RW (mod 16)** means that the
 remote endpoint's receive window is exhausted and an I PDU can not be
 send. If an I PDU can be send then the *send state variable* V(S)
 becomes **V(S) + 1 (mod 16)** after transmission.
