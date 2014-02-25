@@ -32,7 +32,7 @@ minor version if the major versions are identical. If the major
 versions differ then the more advanced implementation may decide if it
 can fall back to the <major>.<minor> version of the peer device.
 
-.. admonition:: Interoperability Test Requirement
+.. requirement::
 
    The interoperability test scenarios require that NFC devices
    implement at least LLCP Version 1.1.
@@ -49,7 +49,7 @@ implementation can afford the memory, the largest possible Link MIU of
 at least use a Link MIU of 248 octets, to allow full utilization of an
 NFC-DEP information packet.
 
-.. admonition:: Interoperability Test Requirement
+.. requirement::
 
    The interoperability test scenarios require that NFC devices have a
    Link MIU of 248 octets or more.
@@ -62,7 +62,7 @@ activation, for example on a platform with on-demand service
 activation. The main purpose of the WKS parameter is to reduce the
 amount of service discovery or blind communication attempts.
 
-.. admonition:: Interoperability Test Requirement
+.. requirement::
 
    The interoperability test scenarios require that NFC devices send a
    WKS parameter during link activation.
@@ -77,7 +77,7 @@ parameter is not received during link activation, a default value of
 2550 milliseconds which is, as a time to let the user know the end of
 communication, not an ideal upper bound.
 
-.. admonition:: Interoperability Test Requirement
+.. requirement::
 
    The interoperability test scenarios require that if an LTO
    parameter then the resulting remote Link Timeout value does not
@@ -91,7 +91,7 @@ the link service class set to zero), the local LLC may behave as if
 both connection-less and connection-oriented transport type are
 supported.
 
-.. admonition:: Interoperability Test Requirement
+.. requirement::
 
    The interoperability test scenarios require that NFC devices support
    both connection-less and connection-oriented transport type and
@@ -159,7 +159,7 @@ become available within a short amount of time it may well increase
 performance if that PDU is sent a few milliseconds later instead of
 delaying it until a next PDU is received from the remote LLC. 
 
-.. admonition:: Interoperability Test Requirement
+.. requirement::
 
    The interoperability test scenarios require that NFC devices send a
    SYMM PDU no later than 10 milliseconds after a PDU was received and
@@ -175,7 +175,7 @@ the only exchange between the two LLCs, and then increase the time
 between receiving and returning a SYMM PDU. Any other PDU sent or
 received would then restore the original conditions.
 
-.. admonition:: Interoperability Test Requirement
+.. requirement::
 
    The interoperability test scenarios require that NFC devices do not
    increase the time between receiving and sending a SYMM PDU before
@@ -203,7 +203,7 @@ for all communications running across the LLCP Link. It is thus highly
 recommended that NFC Devices implement and use frame aggregation
 whenever possible.
 
-.. admonition:: Interoperability Test Requirement
+.. requirement::
 
    The interoperability test scenarios require that NFC devices
    implement and use frame aggregation.

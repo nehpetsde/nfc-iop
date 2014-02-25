@@ -12,7 +12,7 @@ is not defined but the most natural processing in application hosting
 devices such as smartphones is to see if there is an application
 installed that can handle the message type that was received.
 
-.. admonition:: Interoperability Test Requirement
+.. requirement::
 
    The interoperability test scenarios require that a *Default SNEP
    Server* implementation either dispatches or makes visible the NDEF
@@ -25,7 +25,7 @@ be transmittable is only 1024 octets. However, as application hosting
 devices have quite substantially more memory and processing power,
 larger transmission sizes are desirable and achievable.
 
-.. admonition:: Interoperability Test Requirement
+.. requirement::
 
    The interoperability test scenarios require that a *Default SNEP
    Server* implementation supports NDEF message sizes of at least
@@ -51,7 +51,7 @@ maximum information unit size. To achieve acceptable throughput the
 receive window should be at least 2 and the maximum information unit
 size be no less than 248 and a multiple of 248.
 
-.. admonition:: Interoperability Test Requirement
+.. requirement::
 
    The interoperability test scenarios require that a *Default SNEP
    Server* implementation supports a *data link connection* receive
