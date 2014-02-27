@@ -22,9 +22,20 @@ to be executed once with *Device A* as the |DIT| and *Device B* as the
 List of Interoperability Test Requirements
 ==========================================
 
-*Note: This list is automatically generated and not yet sorted.*
+Peer Communication
+------------------
 
-.. requirementlist::
+.. requirementlist:: pp/
+
+Small Data Exchange
+-------------------
+
+.. requirementlist:: dx/
+
+Connection Handover
+-------------------
+
+.. requirementlist:: ch/
 
 License
 =======
