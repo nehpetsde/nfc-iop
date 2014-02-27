@@ -3,7 +3,13 @@ NFC Device Interoperability Test Scenarios
 ==========================================
 
 This documentation proposes interoperability test scenarios for NFC
-Devices.
+Devices. 
+
+All interoperability test scenarios are intended to be run by a |DIT|
+against a |DUT| and for any given pairing of *Device A* and *Device B*
+to be executed once with *Device A* as the |DIT| and *Device B* as the
+|DUT|, and once with *Device A* as the |DUT| and *Device B* as the
+|DIT|.
 
 .. toctree::
    :maxdepth: 2
@@ -15,6 +21,8 @@ Devices.
 
 List of Interoperability Test Requirements
 ==========================================
+
+*Note: This list is automatically generated and not yet sorted.*
 
 .. requirementlist::
 
