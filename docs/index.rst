@@ -3,7 +3,10 @@ NFC Device Interoperability Test Scenarios
 ==========================================
 
 This documentation proposes interoperability test scenarios for NFC
-Devices. 
+Devices such as smartphones, tablets, laptops and other comparably
+capable computing devices. NFC Devices that would typically be
+characterized as embedded or functionally restricted devices are not
+subject of the proposal.
 
 All interoperability test scenarios are intended to be run by a |DIT|
 against a |DUT| and for any given pairing of *Device A* and *Device B*
