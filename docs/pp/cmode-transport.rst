@@ -77,8 +77,6 @@ unit. If that happens, the receiver will send a Frame Reject (FRMR)
 PDU to notify the sender and immediately regard the *data link
 connection* as terminated.
 
-
-
 .. _cmode_eta_connect:
 
 Connection Establishment
@@ -129,7 +127,7 @@ and serve as a *start of test* sequence.
 
 The *data link connection* requested by the |DIT| is further referred
 to as the *outbound data link connection*. The *data link connection*
-requested by the |DIT| is further referred to as the *inbound data
+requested by the |DUT| is further referred to as the *inbound data
 link connection*.
 
 .. _cmode_eta_disconnect:
