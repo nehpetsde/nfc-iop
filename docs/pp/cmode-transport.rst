@@ -61,7 +61,7 @@ remote service user stops generating (or whatever is appropriate). For
 example, the :ref:`cmode_echo_test_application` operates a buffer for
 data units that regulates how many I PDUs can be dispatched from the
 receive window. If the receive window would be 3 and the buffer
-capacity 2 then in total 5 I PDUs may be send by the remote endpoint
+capacity 2, then in total 5 I PDUs may be send by the remote endpoint
 before all gets stuck. By transmitting the busy signal when the echo
 buffer becomes full, the remote party can adjust and stop generating.
 
