@@ -72,6 +72,29 @@ closed the *data link connection*.
 #. Perform :ref:`ch_establish_connection`
 #. Perform :ref:`ch_terminate_connection`
 
+Multiple Messages from Client
+-----------------------------
+
+The purpose of this test scenario is to ensure that the handover
+server implementation keeps the *data link connection* and responds to
+handover messages until the client terminates. This allows a handover
+requester to ask for only a specific subset of alternative carriers in
+a first message to impose a strong preference on the handover
+selector. It also allows a handover mediator to send a handover
+initiate message after receiving a handover select message over the
+same *data link connection*.
+
+#. Perform :ref:`ch_establish_connection`
+#. Send a handover request message with a single alternative carrier
+   of type ``urn:nfc:ext:nfc-forum.org:x-unknown-carrier-type-1``.
+#. Verify that the |DUT| returns a Handover Select Message with an
+   empty alternative carrier selection.
+#. Send a handover request message with a single alternative carrier
+   of type ``urn:nfc:ext:nfc-forum.org:x-unknown-carrier-type-2``.
+#. Verify that the |DUT| returns a Handover Select Message with an
+   empty alternative carrier selection.
+#. Perform :ref:`ch_terminate_connection`
+
 .. _ch_accept_connection:
 
 Accept Connection from Client
