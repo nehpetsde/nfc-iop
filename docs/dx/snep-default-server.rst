@@ -62,7 +62,7 @@ size be no less than 248 and a multiple of 248.
    access point address 4 or a CONNECT PDU with the service name
    ``urn:nfc:sn:snep`` to service access point 1.
 #. Verify that the |DUT| replies with a Connection Complete (CC) PDU.
-#. Verify that the CC PDU contains a Receive Windoe (RR) parameter
+#. Verify that the CC PDU contains a Receive Window (RW) parameter
    with a value of 2 or more.
 #. Verify that the CC PDU contains a Maximum Information Unit
    Extension (MIUX) parameter with a value that results in an MUI that
