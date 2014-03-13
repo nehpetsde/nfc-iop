@@ -208,3 +208,37 @@ possible sequence number values and verify the |DUT| behavior.
    and successively returned on the *inbound data link connection*.
 #. Perform :ref:`cmode_eta_disconnect`.
 
+Receiver Busy Condition
+-----------------------
+
+The purpose of this test scenario is to verify that the |ETA| busy
+state is signaled by the |DUT| when it is no longer able to retrieve
+service data units from the LLC. The condition is forced by the |DIT|
+when it stops retrieving service data units on the *inbound data link
+connection* (the |ETA| will then not be able to return all service
+data units to the |DIT|).
+
+#. Perform :ref:`cmode_eta_connect`.
+#. Send one service data unit over the *outbound data link
+   connection* to the |DUT|.
+#. Verify that the same service data unit is received on the *inbound
+   data link connection* from the |DUT| after the |ETA| buffer delay
+   time.
+#. Stop retrieving service data units from the *inbound data link
+   connection* (the LLC layer will still receive Information PDUs
+   until the Receive Window (RW) is exhausted).
+#. Continuously send service data units over the *outbound data link
+   connection* to the |DUT| until the remote Receive Window (RW) is
+   exhausted and verify that the |ETA| has entered the busy state and
+   caused its LLC to send Receive Not Ready (RNR) PDUs on the
+   *outbound data link connection*.
+#. Resume retrieving service data units from the *inbound data link
+   connection* and verify that all service data units previously sent
+   over the *outbound data link connection* are received in
+   order. This may take two or more times the |ETA| buffer delay time
+   depending on the *outbound data link connection* remote Receive
+   Window (RW) and the |ETA| echo buffer capacity.
+#. Verify that |ETA| has left the busy state and caused its LLC to
+   send a Receive Ready (RR) PDU on the *outbound data link
+   connection*.
+#. Perform :ref:`cmode_eta_disconnect`.
