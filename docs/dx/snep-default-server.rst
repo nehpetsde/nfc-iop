@@ -47,16 +47,20 @@ The SNEP protocol uses the LLCP connection-oriented transport type
 facility, thus a client first has to establish a *data link
 connection* with the server. As part of the connect procedure, the
 server will indicate its *data link connection* receive window and
-maximum information unit size. To achieve acceptable throughput the
-receive window should be at least 2 and the maximum information unit
-size be no less than 248 and a multiple of 248.
+maximum information unit size. To achieve data throughput that allows
+20 KB to be transferred within a time that is convient for the user to
+hold devices in proximity, the the maximum information unit size
+should be the largest possible multiple of 248 octets (to match the
+NFC-DEP capacity for a single information packet) and the receive
+window should be 2 or more to allow the sender to continue while the
+earlier LLCP Information (I) PDU is still to be acknowledged.
 
 .. requirement::
 
    The interoperability test scenarios require that a *Default SNEP
    Server* implementation supports a *data link connection* receive
-   window of 2 or more and a maximum information unit size that is a
-   multiple of 248 octets.
+   window of 2 or more and a maximum information unit size of 1984
+   octets.
 
 #. As a choice of the |DIT| send either a CONNECT PDU to service
    access point address 4 or a CONNECT PDU with the service name
@@ -65,8 +69,8 @@ size be no less than 248 and a multiple of 248.
 #. Verify that the CC PDU contains a Receive Window (RW) parameter
    with a value of 2 or more.
 #. Verify that the CC PDU contains a Maximum Information Unit
-   Extension (MIUX) parameter with a value that results in an MUI that
-   is a multiple of 248.
+   Extension (MIUX) parameter with a value that results in an MUI of
+   1984 octets.
 #. :ref:`disconnect_snep_default_server`
 
 .. _disconnect_snep_default_server:
